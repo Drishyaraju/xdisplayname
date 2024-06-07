@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function XDisplayName() {
+function FullNameDisplay() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [fullName, setFullName] = useState('');
@@ -15,12 +15,15 @@ function XDisplayName() {
 
   const handleSubmit = (event) => {
     event.preventDefault(); 
-    setFullName(`${firstName} ${lastName}`); 
+    const combinedName = `${firstName.trim()} ${lastName.trim()}`; 
+    setFullName(combinedName);
   };
 
   const isFormValid = () => {
-    return firstName.trim() !== '' && lastName.trim() !== '';
+    return combinedName !== ''; 
   };
+
+  const combinedName = `${firstName.trim()} ${lastName.trim()}`; 
 
   return (
     <div className="full-name-display">
@@ -51,4 +54,4 @@ function XDisplayName() {
   );
 }
 
-export default XDisplayName;
+export default FullNameDisplay;
